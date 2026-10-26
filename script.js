@@ -20,3 +20,17 @@ video?.addEventListener('pause', () => {
   if (video.currentTime < video.duration) videoCard?.classList.remove('is-playing');
 });
 video?.addEventListener('ended', () => videoCard?.classList.remove('is-playing'));
+
+// Показываем фотографию тренера в блоке «Обо мне» полностью, без обрезки.
+const aboutPhotoWrap = document.querySelector('.about-photo-wrap');
+const aboutPhoto = document.querySelector('.about-photo-wrap img');
+if (aboutPhotoWrap && aboutPhoto) {
+  aboutPhotoWrap.style.background = '#151517';
+  aboutPhotoWrap.style.display = 'flex';
+  aboutPhotoWrap.style.alignItems = 'center';
+  aboutPhotoWrap.style.justifyContent = 'center';
+  aboutPhoto.style.width = '100%';
+  aboutPhoto.style.height = '100%';
+  aboutPhoto.style.objectFit = 'contain';
+  aboutPhoto.style.objectPosition = 'center center';
+}
