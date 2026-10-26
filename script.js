@@ -21,16 +21,44 @@ video?.addEventListener('pause', () => {
 });
 video?.addEventListener('ended', () => videoCard?.classList.remove('is-playing'));
 
-// Показываем фотографию тренера в блоке «Обо мне» полностью, без обрезки.
-const aboutPhotoWrap = document.querySelector('.about-photo-wrap');
-const aboutPhoto = document.querySelector('.about-photo-wrap img');
-if (aboutPhotoWrap && aboutPhoto) {
-  aboutPhotoWrap.style.background = '#151517';
-  aboutPhotoWrap.style.display = 'flex';
-  aboutPhotoWrap.style.alignItems = 'center';
-  aboutPhotoWrap.style.justifyContent = 'center';
-  aboutPhoto.style.width = '100%';
-  aboutPhoto.style.height = '100%';
-  aboutPhoto.style.objectFit = 'contain';
-  aboutPhoto.style.objectPosition = 'center center';
+// About section photo: show the trainer larger while keeping face and body fully visible.
+const aboutPhotoFix = document.createElement('style');
+aboutPhotoFix.textContent = `
+@media (min-width: 1001px) {
+  .about-grid {
+    grid-template-columns: 1.02fr 1.12fr .74fr;
+  }
+  .about-photo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #171719;
+  }
+  .about-photo-wrap img {
+    width: 100%;
+    height: auto;
+    max-width: none;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center center;
+  }
 }
+@media (max-width: 1000px) {
+  .about-photo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    min-height: 0;
+    background: #171719;
+  }
+  .about-photo-wrap img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center center;
+  }
+}
+`;
+document.head.appendChild(aboutPhotoFix);
