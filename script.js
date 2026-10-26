@@ -24,7 +24,7 @@ video?.addEventListener('ended', () => videoCard?.classList.remove('is-playing')
 // Force the latest trainer photo to load instead of a cached copy.
 const aboutPhoto = document.querySelector('.about-photo-wrap img');
 if (aboutPhoto) {
-  aboutPhoto.src = 'assets/about.jpg?v=20261026-3';
+  aboutPhoto.src = 'assets/about.jpg?v=20261026-4';
 }
 
 // About section photo: show the trainer larger while keeping face and body fully visible.
